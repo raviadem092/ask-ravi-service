@@ -1,6 +1,5 @@
 const fs = require("fs");
 const path = require("path");
-
 const KNOWLEDGE_PATH = path.join(__dirname, "../knowledge");
 
 let cachedKnowledge = null;
@@ -10,7 +9,6 @@ const loadKnowledge = () => {
     if (cachedKnowledge) {
         return cachedKnowledge;
     }
-
     try {
         const files = fs
             .readdirSync(KNOWLEDGE_PATH)
@@ -25,21 +23,18 @@ const loadKnowledge = () => {
                 );
 
                 return `
-==============================
-${file.replace(".md", "").toUpperCase()}
-==============================
+                ==============================
+                ${file.replace(".md", "").toUpperCase()}
+                ==============================
 
-${content}
-`;
+                ${content}
+                `;
             })
             .join("\n");
-
-        console.log(`✅ Loaded ${files.length} knowledge files.`);
-
+        // console.log(`Loaded ${files.length} knowledge files.`);
         return cachedKnowledge;
-
     } catch (error) {
-        console.error("❌ Failed to load knowledge:", error);
+        console.error("Failed to load knowledge:", error);
         return "";
     }
 };
