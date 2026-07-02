@@ -6,9 +6,14 @@ const {
     validateChatRequest,
 } = require("../middleware/validator");
 
+const {
+    chatRateLimiter,
+} = require("../middleware/rateLimiter");
+
 router.post(
     "/",
     validateChatRequest,
+    chatRateLimiter,
     chatController.chat
 );
 

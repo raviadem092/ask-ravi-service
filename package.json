@@ -15,15 +15,17 @@
   "license": "ISC",
   "dependencies": {
     "@google/genai": "^2.10.0",
+    "compression": "^1.8.1",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "express-rate-limit": "^8.5.2",
     "genai": "^0.0.18",
+    "helmet": "^8.2.0",
     "mysql2": "^3.22.5",
     "pdf-parse": "^1.1.1",
     "pg": "^8.22.0",
-    "redis": "^5.11.0",
+    "redis": "^5.12.1",
     "winston": "^3.19.0",
     "winston-daily-rotate-file": "^5.0.0"
   },
