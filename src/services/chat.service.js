@@ -71,15 +71,23 @@ const generateResponse = async (
         return response.text;
 
     } catch (error) {
-
         console.error("Gemini Error:", error);
+        if (error.status === 429) {
+            throw new Error(
+                "⚠️ Ask Ravi is receiving a lot of requests right now. Please try again in a few moments."
+            );
 
+        }
+        if (error.status === 503) {
+
+            throw new Error(
+                "The AI service is currently experiencing high demand. Please try again in a moment."
+            );
+        }
         throw new Error(
-            "Failed to generate AI response."
+            "Unable to generate a response right now."
         );
-
     }
-
 };
 
 module.exports = {
