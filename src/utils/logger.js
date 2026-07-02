@@ -19,19 +19,14 @@ const logger = createLogger({
     format: isProduction
 
         ? format.combine(
-
               format.timestamp(),
-
               format.errors({
                   stack: true,
               }),
-
               format.json()
-
           )
 
         : format.combine(
-
               format.colorize(),
 
               format.timestamp({
@@ -42,32 +37,20 @@ const logger = createLogger({
                   stack: true,
               }),
 
-              format.printf((info) => {
-
-                  const {
+              format.printf(
+                  ({
                       timestamp,
                       level,
                       message,
                       stack,
-                      ...meta
-                  } = info;
+                  }) => {
 
-                  let log =
-                      `[${timestamp}] ${level}: ${message || ""}`;
+                      return stack
+                          ? `[${timestamp}] ${level}: ${message}\n${stack}`
+                          : `[${timestamp}] ${level}: ${message}`;
 
-                  if (Object.keys(meta).length) {
-                      log +=
-                          ` ${JSON.stringify(meta)}`;
                   }
-
-                  if (stack) {
-                      log += `\n${stack}`;
-                  }
-
-                  return log;
-
-              })
-
+              )
           ),
 
     transports: [

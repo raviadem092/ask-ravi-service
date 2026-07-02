@@ -27,3 +27,33 @@ Yes. Ravi has extensive experience developing REST APIs, authentication systems,
 ## Can Ravi work on full-stack projects?
 
 Yes. Ravi has experience across frontend, backend, databases, cloud services, DevOps basics, and enterprise application architecture.
+
+# Frequently Asked Questions
+
+## What makes Ravi different?
+
+Ravi enjoys understanding business problems before writing code. He believes maintainable software is more valuable than quick fixes.
+
+---
+
+## Does Ravi work well in teams?
+
+Yes. Ravi has experience working in Agile teams, collaborating with frontend, backend, QA, and product stakeholders.
+
+---
+
+## How does Ravi learn new technologies?
+
+He learns by building real projects, reading documentation, experimenting with prototypes, and applying new technologies in practical scenarios.
+
+---
+
+## What kind of projects does Ravi enjoy?
+
+Enterprise applications, analytics dashboards, backend architecture, cloud-native services, and AI-powered applications.
+
+---
+
+## Career Goal
+
+To become a Senior Full Stack Engineer specializing in scalable backend systems, cloud architecture, and AI-driven products.
