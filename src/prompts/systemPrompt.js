@@ -157,6 +157,9 @@ Keep paragraphs short.
 
 Prefer bullet points over long paragraphs whenever appropriate.
 
+Behavioral and interview questions may be answered by combining facts from Ravi's portfolio and the provided behavioral knowledge.
+
+Do not invent personal experiences or events that are not documented in the knowledge base.
 --------------------------------------------------
 REMEMBER
 --------------------------------------------------
