@@ -1,98 +1,22 @@
 const express = require("express");
 const cors = require("cors");
-const helmet = require("helmet");
-const compression = require("compression");
-
-const ERRORS = require("./constants/errors");
-const corsOptions =
-    require("./config/cors");
-
-const requestLogger = require("./middleware/requestLogger");
-const errorHandler = require("./middleware/errorHandler");
-
 const healthRoutes = require("./routes/health.routes");
 const chatRoutes = require("./routes/chat.routes");
 const questionRoutes = require("./routes/question.routes");
+const HTTP_CODES = require("./constants/errors");
+const errorHandler = require("./middleware/errorHandler");
 
 const app = express();
 
 /**
- * Request Logger
- */
-app.use(requestLogger);
-
-/**
- * Security Headers
+ * Middlewares
  */
 app.use(
-    helmet({
-
-        hidePoweredBy: true,
-
-        frameguard: {
-            action: "deny",
-        },
-
-        noSniff: true,
-
-        referrerPolicy: {
-            policy: "strict-origin-when-cross-origin",
-        },
-
-        /**
-         * We'll configure CSP later
-         */
-        contentSecurityPolicy: false,
-
-        /**
-         * Disable for React + external resources
-         */
-        crossOriginEmbedderPolicy: false,
-
+    cors({
+        origin: process.env.CLIENT_URL || "*",
     })
 );
 
-
-/**
- * Response Compression
- */
-app.use(
-    compression({
-
-        /**
-         * Skip tiny responses
-         */
-        threshold: "1kb",
-
-        /**
-         * Respect Cache-Control: no-transform
-         */
-        filter: (req, res) => {
-
-            if (
-                res.getHeader("Cache-Control") ===
-                "no-transform"
-            ) {
-                return false;
-            }
-
-            return compression.filter(req, res);
-
-        },
-
-    })
-);
-
-/**
- * CORS
- */
-app.use(
-    cors(corsOptions)
-);
-
-/**
- * Body Parser
- */
 app.use(
     express.json({
         limit: "2mb",
@@ -103,12 +27,10 @@ app.use(
  * Root
  */
 app.get("/", (req, res) => {
-
-    return res.status(ERRORS.HTTP_CODES.OK).json({
+    res.status().json({
         success: true,
         message: "Ask Ravi Service is running.",
     });
-
 });
 
 /**
