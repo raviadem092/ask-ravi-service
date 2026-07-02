@@ -1,8 +1,9 @@
 const ai = require("../config/gemini");
 const SYSTEM_PROMPT = require("../prompts/systemPrompt");
 const loadKnowledge = require("../utils/loadKnowledge");
-
+const logger = require("../utils/logger");
 const MODEL = "gemini-2.5-flash";
+const ERRORS = require("../constants/errors");
 
 const KNOWLEDGE = loadKnowledge();
 
@@ -71,22 +72,34 @@ const generateResponse = async (
         return response.text;
 
     } catch (error) {
-        console.error("Gemini Error:", error);
-        if (error.status === 429) {
-            throw new Error(
-                "⚠️ Ask Ravi is receiving a lot of requests right now. Please try again in a few moments."
-            );
-
-        }
-        if (error.status === 503) {
-
-            throw new Error(
-                "The AI service is currently experiencing high demand. Please try again in a moment."
-            );
-        }
-        throw new Error(
-            "Unable to generate a response right now."
+        logger.error(
+            `Gemini Error: ${error.message}`,
+            {
+                status: error.status,
+                stack: error.stack,
+            }
         );
+
+        if (error.status === ERRORS.HTTP_CODES.RATE_LIMIT_EXCEEDED) {
+
+            const err = new Error(ERRORS.AI_BUSY);
+            err.status = ERRORS.HTTP_CODES.RATE_LIMIT_EXCEEDED;
+            throw err;
+
+        }
+
+        if (error.status === ERRORS.HTTP_CODES.SERVICE_UNAVAILABLE) {
+
+            const err = new Error(ERRORS.AI_UNAVAILABLE);
+            err.status = ERRORS.HTTP_CODES.SERVICE_UNAVAILABLE;
+            throw err;
+
+        }
+
+        const err = new Error(ERRORS.INTERNAL_SERVER_ERROR);
+        err.status = ERRORS.HTTP_CODES.INTERNAL_SERVER_ERROR;
+
+        throw err;
     }
 };
 

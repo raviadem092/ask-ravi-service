@@ -1,5 +1,6 @@
+const ERRORS = require("../constants/errors");
 exports.health = (req, res) => {
-    res.status(200).json({
+    res.status(ERRORS.HTTP_CODES.OK).json({
         success: true,
         data: {
             service: "Ask Ravi Service",

@@ -1,4 +1,5 @@
 const chatService = require("../services/chat.service");
+const ERRORS = require("../constants/errors");
 
 exports.chat = async (req, res) => {
     try {
@@ -8,19 +9,12 @@ exports.chat = async (req, res) => {
             history = [],
         } = req.body;
 
-        if (!message?.trim()) {
-            return res.status(400).json({
-                success: false,
-                message: "Message is required."
-            });
-        }
-
         const answer = await chatService.generateResponse(
             message,
             history
         );
 
-        return res.status(200).json({
+        return res.status(ERRORS.HTTP_CODES.OK).json({
             success: true,
             answer
         });
@@ -29,7 +23,7 @@ exports.chat = async (req, res) => {
 
         console.error(error);
 
-        return res.status(500).json({
+        return res.status(ERRORS.HTTP_CODES.INTERNAL_SERVER_ERROR).json({
             success: false,
             message: error.message
         });

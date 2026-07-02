@@ -3,19 +3,46 @@ const cors = require("cors");
 const healthRoutes = require("./routes/health.routes");
 const chatRoutes = require("./routes/chat.routes");
 const questionRoutes = require("./routes/question.routes");
+const HTTP_CODES = require("./constants/errors");
+const errorHandler = require("./middleware/errorHandler");
 
 const app = express();
-app.use(cors());
-app.use(express.json({ limit: "2mb" }));
 
+/**
+ * Middlewares
+ */
+app.use(
+    cors({
+        origin: process.env.CLIENT_URL || "*",
+    })
+);
+
+app.use(
+    express.json({
+        limit: "2mb",
+    })
+);
+
+/**
+ * Root
+ */
 app.get("/", (req, res) => {
-    res.json({
+    res.status().json({
         success: true,
-        message: "Ask Ravi Service is running..."
+        message: "Ask Ravi Service is running.",
     });
 });
 
+/**
+ * Routes
+ */
 app.use("/api/chat", chatRoutes);
-app.use("/api/health", healthRoutes);
 app.use("/api/questions", questionRoutes);
+app.use("/api/health", healthRoutes);
+
+/**
+ * Global Error Handler
+ */
+app.use(errorHandler);
+
 module.exports = app;
