@@ -3,7 +3,7 @@ const cors = require("cors");
 const healthRoutes = require("./routes/health.routes");
 const chatRoutes = require("./routes/chat.routes");
 const questionRoutes = require("./routes/question.routes");
-const HTTP_CODES = require("./constants/errors");
+const ERRORS = require("./constants/errors");
 const errorHandler = require("./middleware/errorHandler");
 
 const app = express();
@@ -27,7 +27,7 @@ app.use(
  * Root
  */
 app.get("/", (req, res) => {
-    res.status(HTTP_CODES.HTTP_CODES.OK).json({
+    res.status(ERRORS.HTTP_CODES.OK).json({
         success: true,
         message: "Ask Ravi Service is running.",
     });
