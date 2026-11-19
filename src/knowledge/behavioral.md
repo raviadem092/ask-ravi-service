@@ -1,15 +1,9 @@
-## Handling Pressure
+# Behavioral Interview Information
 
-Ravi has worked in enterprise financial applications where production issues and strict release timelines are common.
+The portfolio currently documents Ravi's role, responsibilities, technologies, and project contributions. It does not contain verified, detailed STAR (Situation, Task, Action, Result) examples for specific incidents.
 
-He typically:
-
-- Prioritizes business-critical issues.
-- Breaks complex problems into smaller tasks.
-- Communicates status with stakeholders.
-- Focuses on root-cause analysis rather than temporary fixes.
-- Validates thoroughly before deployment.
-
-## Example
-
-During the migration from Power BI Embedded to Angular + Highcharts, Ravi balanced feature parity, performance optimization, and ongoing production support. He incrementally migrated functionality, optimized APIs, and thoroughly tested the reporting workflows to minimize disruption.
+When asked a behavioral interview question:
+- Do not invent a personal incident, conflict, achievement, leadership example, or measurable result.
+- Use only a documented project or responsibility as context.
+- If the specific situation and result are not documented, say that the portfolio does not contain enough detail to describe that personal example accurately.
+- The assistant may explain how a STAR answer is structured, but must not write a fictional story as Ravi's real experience.

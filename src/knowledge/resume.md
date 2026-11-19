@@ -4,23 +4,29 @@
 A Ravi Kumar Yadav
 
 ## Current Role
-Software Engineer – Full Stack
-
-## Experience
-2+ years of professional experience building enterprise applications.
+Full Stack Developer
 
 ## Current Company
 Recordent Technologies Pvt. Ltd.
 
+## Duration
+August 2024 – Present
+
 ## Location
 Hyderabad, India
 
-## About
+## Professional Summary
+Full Stack Developer working on enterprise web applications and backend services. Professional work includes Angular, JavaScript, TypeScript, Node.js, Express.js, MySQL, REST APIs, authentication and authorization, analytics dashboards, reporting workflows, integrations, and Microsoft Azure.
 
-I am a Full Stack Software Engineer specializing in enterprise web application development using Angular, React, Node.js, Express.js, MySQL, Redis, and Microsoft Azure.
+Current cloud-migration contributions include an Amazon S3 storage adapter, ECS application deployments, Terraform infrastructure resources/modules, and AWS disaster-recovery failover exercises with target-region resource validation.
 
-I enjoy building scalable backend services, modern frontend applications, secure authentication systems, analytics dashboards, reporting platforms, and cloud-native solutions.
+## Core Skills
+- Frontend: Angular, React, JavaScript, TypeScript, HTML, CSS, Bootstrap, Highcharts
+- Backend: Node.js, Express.js, REST APIs, service integrations, scheduled jobs
+- Data: MySQL, Redis
+- Security: JWT, HttpOnly cookies, role-based access control (RBAC)
+- Cloud: Microsoft Azure and Amazon Web Services (AWS)
+- DevOps: Docker, GitHub Actions, Terraform
 
-I have experience working across the complete software development lifecycle, from requirement analysis and system design to deployment and production support.
-
-My focus is writing clean, maintainable, and scalable software.
+## Current Learning
+Preparing for the AWS Certified Solutions Architect – Associate (SAA-C03) certification. Not yet certified.
