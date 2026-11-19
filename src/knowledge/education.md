@@ -1,19 +1,13 @@
 # Education
 
-Bachelor of Technology
-
-Electrical and Electronics Engineering
-
-Sree Dattha Institute of Engineering and Science
-
-2020–2023
+## Bachelor of Technology (B.Tech)
+**Branch:** Electrical and Electronics Engineering  
+**Institution:** Sree Dattha Institute of Engineering and Science  
+**Duration:** July 2020 – July 2023
 
 ---
 
-Diploma
-
-Computer Science and Engineering
-
-TRR College of Technology Polytechnic
-
-2017–2020
+## Diploma
+**Branch:** Computer Science and Engineering  
+**Institution:** TRR College of Technology Polytechnic  
+**Duration:** June 2017 – April 2020
