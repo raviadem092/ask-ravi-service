@@ -1,230 +1,167 @@
-# Ask Ravi Service 
+# Ask Ravi Service
 
-An AI-powered portfolio chatbot built with **Node.js**, **Express**, and **Google Gemini 2.5 Flash**. The chatbot answers questions about Ravi's skills, projects, experience, education, and resume using a structured knowledge base.
+An AI-powered portfolio and engineering assistant built with **Node.js**, **Express**, and **Google Gemini 2.5 Flash**. It answers questions using a Markdown knowledge base about Ravi's experience and projects, and can also explain general software engineering and architecture concepts.
 
----
+## Features
 
-## ✨ Features
+- Conversational portfolio assistant
+- Google Gemini 2.5 Flash integration
+- Modular Express application structure
+- Markdown knowledge base loaded at startup
+- Conversation history supplied with chat requests
+- REST API and health-check endpoint
+- Request validation and centralized error handling
+- Configurable environment variables
+- Docker / deployment-ready project structure
 
-* AI-powered conversational chatbot
-* Google Gemini 2.5 Flash integration
-* Modular Express architecture
-* Markdown-based knowledge base
-* Environment-based configuration
-* Clean REST API
-* Easy to extend and maintain
-* Streaming responses
-* Conversation memory
-* Retrieval-Augmented Generation (RAG)
-* Source citations
-* Suggested questions
-* Rate limiting
-* Docker support
-* Deployment configuration
+> **Implementation note:** The current implementation reads the Markdown files in `src/knowledge`, caches their combined contents in memory, and includes that content in the Gemini prompt. It is currently a prompt-context knowledge approach. Do not interpret the project as having vector embeddings, semantic retrieval, a vector database, or source citations unless those capabilities are implemented separately.
 
----
+## Getting Started
 
-# Getting Started
-
-## 1. Clone the Repository
+### 1. Clone and install
 
 ```bash
 git clone https://github.com/raviadem092/ask-ravi-service.git
-
 cd ask-ravi-service
-```
-
----
-
-## 2. Install Dependencies
-
-```bash
 npm install
 ```
 
-or
+### 2. Configure environment
 
-```bash
-npm install express @google/genai dotenv cors
-
-npm install -D nodemon
-```
-
----
-
-## 3. Create Environment Variables
-
-Create a `.env` file in the project root.
+Create a `.env` file in the project root:
 
 ```env
 PORT=5000
-
 GEMINI_API_KEY=YOUR_GEMINI_API_KEY
+CLIENT_URL=http://localhost:3000
 ```
 
----
+Use a real Gemini API key locally. Never commit `.env` or expose the key in client-side code.
 
-## 4. Start Development Server
+### 3. Run
 
 ```bash
 npm run dev
 ```
 
-Server will start at
+The default server port in `server.js` is 3001 unless `PORT` is configured.
 
-```
-http://localhost:5000
-```
+## API
 
----
+### Health
 
-# Available API Endpoints
-
-## Health Check
-
-```
+```http
 GET /api/health
 ```
 
-Response
+### Chat
 
-```json
-{
-  "success": true,
-  "message": "Server is running."
-}
-```
-
----
-
-## Chat
-
-```
+```http
 POST /api/chat
+Content-Type: application/json
 ```
 
-Request
+Example request:
 
 ```json
 {
-  "message": "Tell me about Ravi"
+  "message": "Explain the architecture of Ravi's AWS migration work",
+  "history": []
 }
 ```
 
-Response
+The response contains a success flag and generated answer. Check the route/controller implementation for the current response contract and validation rules.
 
-```json
-{
-  "success": true,
-  "answer": "Ravi is a Full Stack Developer..."
-}
+### Suggested questions
+
+```http
+GET /api/questions
 ```
 
----
-
-# Knowledge Base
-
-The chatbot uses Markdown files as its knowledge source.
-
-```text
-knowledge/
-│
-├── resume.md
-├── skills.md
-├── projects.md
-└── experience.md
-```
-
-These files are loaded into the system prompt so the chatbot can answer questions about the portfolio.
-
-Example questions:
-
-* Tell me about Ravi.
-* What technologies does Ravi know?
-* Explain Ravi's latest project.
-* What backend frameworks has Ravi used?
-* What databases has Ravi worked with?
-* Show Ravi's work experience.
-* What is Ravi currently learning?
-
----
-
-# Architecture
+## Current application architecture
 
 ```text
 Client
-   │
-   ▼
-Routes
-   │
-   ▼
-Controller
-   │
-   ▼
-Service
-   │
-   ▼
-Gemini Client
-   │
-   ▼
-Google Gemini API
+  |
+  v
+Express application (src/app.js)
+  |
+  +--> Routes
+  |      +--> Chat route --> Chat controller
+  |      |                    |
+  |      |                    v
+  |      |                Chat service
+  |      |                    |
+  |      |          +---------+----------+
+  |      |          |                    |
+  |      |       System prompt      Markdown knowledge
+  |      |                               loader
+  |      |          +---------+----------+
+  |      |                    |
+  |      +----------------> Gemini API
+  |
+  +--> Questions route
+  |
+  +--> Health route
+  |
+  +--> Central error handler
 ```
 
-Each layer has a single responsibility, making the project scalable and easy to maintain.
+### Main responsibilities
 
----
+- `server.js`: loads environment configuration and starts the HTTP server.
+- `src/app.js`: configures Express middleware, routes, and error handling.
+- `src/routes`: maps HTTP paths to controllers.
+- `src/controllers`: handles HTTP request/response behavior.
+- `src/services/chat.service.js`: assembles system prompt, knowledge, conversation history, and the current question; calls Gemini.
+- `src/prompts/systemPrompt.js`: defines assistant behavior and grounding rules.
+- `src/knowledge/*.md`: portfolio and technical knowledge documents.
+- `src/utils/loadKnowledge.js`: reads and caches Markdown knowledge at process startup/first load.
+- `src/config/gemini.js`: configures the Gemini client.
+- `src/middleware`: validation and error-handling middleware.
 
-# Scripts
+## Knowledge base
+
+Markdown files are stored under `src/knowledge`. The loader discovers all `.md` files, sorts them, concatenates their content, and caches the result in process memory. Add or update a Markdown file to extend the assistant's context. Restart the service to ensure changed files are loaded by a fresh process.
+
+Knowledge is organized around:
+- Resume, experience, skills, education, and contact
+- Projects and professional contributions
+- Architecture and system design
+- Technical architecture, cloud, DevOps, security, reliability, and troubleshooting
+- FAQs and behavioral examples
+
+Keep facts evidence-based. Separate implemented work, ongoing initiatives, personal projects, and general engineering recommendations.
+
+## Testing
 
 ```bash
-npm run dev
+npm test
+npm run test:ci
+npm run test:coverage
 ```
 
-Runs the application in development mode using Nodemon.
+Run the test suite before merging changes.
 
-```bash
-npm start
-```
+## Environment variables
 
-Runs the production server.
+| Variable | Purpose |
+|---|---|
+| `PORT` | HTTP server port (defaults to 3001 in `server.js`) |
+| `GEMINI_API_KEY` | Server-side Gemini API credential |
+| `CLIENT_URL` | Allowed frontend origin; confirm CORS policy for each deployment |
 
----
+## Future architecture opportunities
 
-# Environment Variables
+These are potential improvements, not claims about current implementation:
+- Embedding-based semantic retrieval and a vector store for larger knowledge bases.
+- Chunk-level source references and citations.
+- Persistent server-side conversation sessions.
+- Redis-backed caching and distributed rate limiting.
+- Structured logs, metrics, tracing, and request correlation IDs.
+- Automated CI checks for tests, linting, dependency security, and container builds.
+- Prompt/version evaluation with a repeatable question-and-answer test set.
 
-| Variable       | Description           |
-| -------------- | --------------------- |
-| PORT           | Express server port   |
-| GEMINI_API_KEY | Google Gemini API key |
+## License
 
----
-
-# Contributing
-
-Contributions, suggestions, and improvements are welcome.
-
-1. Fork the repository.
-2. Create a feature branch.
-3. Commit your changes.
-4. Push the branch.
-5. Open a Pull Request.
-
----
-
-# License
-
-This project is licensed under the MIT License.
-
----
-
-# Author
-
-**Ravi Kumar Yadav **
-
-Full Stack Developer
-
-Building modern web applications using Node.js, Express, React, MySQL, and AI-powered solutions.
-
----
-
-⭐ If you found this project useful, consider giving it a star on GitHub.
+See the repository license file for the applicable license.
