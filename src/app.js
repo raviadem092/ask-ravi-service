@@ -27,7 +27,7 @@ app.use(
  * Root
  */
 app.get("/", (req, res) => {
-    res.status().json({
+    res.status(HTTP_CODES.HTTP_CODES.OK).json({
         success: true,
         message: "Ask Ravi Service is running.",
     });
