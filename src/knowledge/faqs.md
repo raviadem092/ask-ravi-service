@@ -2,58 +2,24 @@
 
 ## Who is Ravi?
 
-Ravi is a Full Stack Software Engineer specializing in Angular, React, Node.js, Express.js, MySQL, Redis, and Microsoft Azure.
+Ravi is a Full Stack Developer at Recordent Technologies Pvt. Ltd. in Hyderabad. He has worked on enterprise application development using Angular, Node.js, Express.js, MySQL, REST APIs, analytics dashboards, reporting workflows, and cloud services.
 
----
+## What technologies has Ravi worked with?
 
-## Why should I hire Ravi?
+His documented skills include Angular, React, JavaScript, TypeScript, Node.js, Express.js, MySQL, Redis, Highcharts, Microsoft Azure, AWS, Docker, GitHub Actions, and Terraform. The portfolio distinguishes professional work from personal learning projects.
 
-Ravi has experience building enterprise-scale financial applications, secure authentication systems, analytics dashboards, cloud-native solutions, and scalable REST APIs. He focuses on clean architecture, maintainable code, and end-to-end product development.
+## What is Ravi's AWS experience?
 
----
+Ravi has contributed to the Azure-to-AWS storage migration, implemented an S3 adapter using AWS SDK for JavaScript v3, worked with ECS deployments and task definitions, created Terraform resources/modules, and participated in disaster-recovery failover exercises and target-region resource validation.
 
-## Does Ravi know React?
+## Has Ravi completed AWS Solutions Architect certification?
 
-Yes. Ravi has experience building React applications and is currently developing modern full-stack projects using React and Node.js.
+No. Ravi is preparing for AWS Certified Solutions Architect – Associate (SAA-C03).
 
----
+## What kind of work has Ravi done at Recordent?
 
-## Does Ravi know Node.js?
+His documented work includes frontend and backend application development, REST APIs, authentication and authorization, analytics dashboards, reporting workflows, scheduled jobs, integrations, MySQL/Redis usage, and cloud migration contributions.
 
-Yes. Ravi has extensive experience developing REST APIs, authentication systems, microservices, cron jobs, and enterprise backend services using Node.js and Express.js.
+## What is Ravi's personal DevOps project?
 
----
-
-## Can Ravi work on full-stack projects?
-
-Yes. Ravi has experience across frontend, backend, databases, cloud services, DevOps basics, and enterprise application architecture.
-
-# Frequently Asked Questions
-
-## What makes Ravi different?
-
-Ravi enjoys understanding business problems before writing code. He believes maintainable software is more valuable than quick fixes.
-
----
-
-## Does Ravi work well in teams?
-
-Yes. Ravi has experience working in Agile teams, collaborating with frontend, backend, QA, and product stakeholders.
-
----
-
-## How does Ravi learn new technologies?
-
-He learns by building real projects, reading documentation, experimenting with prototypes, and applying new technologies in practical scenarios.
-
----
-
-## What kind of projects does Ravi enjoy?
-
-Enterprise applications, analytics dashboards, backend architecture, cloud-native services, and AI-powered applications.
-
----
-
-## Career Goal
-
-To become a Senior Full Stack Engineer specializing in scalable backend systems, cloud architecture, and AI-driven products.
+Ravi has a Node.js AWS DevOps lab where he practices Docker, Docker Compose, Nginx, GitHub Actions, Amazon ECR, Amazon S3, and CloudFront. This is a personal learning project, separate from his Recordent employment.
