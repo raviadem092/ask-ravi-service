@@ -115,7 +115,7 @@ Express application (src/app.js)
 - `src/controllers`: handles HTTP request/response behavior.
 - `src/services/chat.service.js`: assembles system prompt, knowledge, conversation history, and the current question; calls Gemini.
 - `src/prompts/systemPrompt.js`: defines assistant behavior and grounding rules.
-- `src/knowledge/*.md`: portfolio and technical knowledge documents.
+- `src/knowledge/*.md`: portfolio knowledge documents.
 - `src/utils/loadKnowledge.js`: reads and caches Markdown knowledge at process startup/first load.
 - `src/config/gemini.js`: configures the Gemini client.
 - `src/middleware`: validation and error-handling middleware.
@@ -127,9 +127,7 @@ Markdown files are stored under `src/knowledge`. The loader discovers all `.md` 
 Knowledge is organized around:
 - Resume, experience, skills, education, and contact
 - Projects and professional contributions
-- Architecture and system design
-- Technical architecture, cloud, DevOps, security, reliability, and troubleshooting
-- FAQs and behavioral examples
+- FAQs and behavioral interview guidance
 
 Keep facts evidence-based. Separate implemented work, ongoing initiatives, personal projects, and general engineering recommendations.
 
@@ -150,17 +148,6 @@ Run the test suite before merging changes.
 | `PORT` | HTTP server port (defaults to 3001 in `server.js`) |
 | `GEMINI_API_KEY` | Server-side Gemini API credential |
 | `CLIENT_URL` | Allowed frontend origin; confirm CORS policy for each deployment |
-
-## Future architecture opportunities
-
-These are potential improvements, not claims about current implementation:
-- Embedding-based semantic retrieval and a vector store for larger knowledge bases.
-- Chunk-level source references and citations.
-- Persistent server-side conversation sessions.
-- Redis-backed caching and distributed rate limiting.
-- Structured logs, metrics, tracing, and request correlation IDs.
-- Automated CI checks for tests, linting, dependency security, and container builds.
-- Prompt/version evaluation with a repeatable question-and-answer test set.
 
 ## License
 
