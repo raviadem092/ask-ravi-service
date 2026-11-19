@@ -6,35 +6,27 @@ A Ravi Kumar Yadav
 ## Current Role
 Full Stack Developer
 
-## Experience
-2+ years of professional experience building and maintaining enterprise applications.
-
 ## Current Company
 Recordent Technologies Pvt. Ltd.
+
+## Duration
+August 2024 – Present
 
 ## Location
 Hyderabad, India
 
-## About
+## Professional Summary
+Full Stack Developer working on enterprise web applications and backend services. Professional work includes Angular, JavaScript, TypeScript, Node.js, Express.js, MySQL, REST APIs, authentication and authorization, analytics dashboards, reporting workflows, integrations, and Microsoft Azure.
 
-I am a Full Stack Developer with experience building enterprise web applications and backend services using Angular, React, JavaScript, TypeScript, Node.js, Express.js, and MySQL.
+Current cloud-migration contributions include an Amazon S3 storage adapter, ECS application deployments, Terraform infrastructure resources/modules, and AWS disaster-recovery failover exercises with target-region resource validation.
 
-My work includes REST APIs and microservices, authentication and authorization, analytics dashboards, reporting workflows, third-party integrations, and cloud-based storage. I have worked with Microsoft Azure and am actively contributing to an Azure-to-AWS migration, including AWS S3 storage integration, ECS deployments, infrastructure provisioning with Terraform, and disaster-recovery exercises.
-
-I focus on building maintainable software, improving existing systems, and understanding the infrastructure and deployment workflows behind production applications.
-
-## Core Areas
-
-- Frontend development with Angular and React
-- Backend development with Node.js and Express.js
-- REST API design and service integration
-- MySQL data access and Redis caching
-- Secure authentication with JWT, HttpOnly cookies, and RBAC
-- Analytics and reporting with Angular and Highcharts
-- Azure and AWS cloud services
-- Docker, GitHub Actions, CI/CD, and Terraform
-- Application deployment, monitoring, and troubleshooting
+## Core Skills
+- Frontend: Angular, React, JavaScript, TypeScript, HTML, CSS, Bootstrap, Highcharts
+- Backend: Node.js, Express.js, REST APIs, service integrations, scheduled jobs
+- Data: MySQL, Redis
+- Security: JWT, HttpOnly cookies, role-based access control (RBAC)
+- Cloud: Microsoft Azure and Amazon Web Services (AWS)
+- DevOps: Docker, GitHub Actions, Terraform
 
 ## Current Learning
-
-Preparing for the AWS Certified Solutions Architect – Associate (SAA-C03) certification. This is in progress and is not a completed certification.
+Preparing for the AWS Certified Solutions Architect – Associate (SAA-C03) certification. Not yet certified.
